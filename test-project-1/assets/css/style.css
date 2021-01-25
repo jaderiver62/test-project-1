@@ -1,5 +1,5 @@
 * {
-    background-color: rgb(142, 247, 187);
+    background-color: rgb(111, 160, 235);
 }
 
 main {
@@ -10,13 +10,10 @@ main {
 }
 
 .content {
-    background-color: white;
     color: black;
-    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 50px;
-    border: 2px solid black;
     font-weight: bold;
 }

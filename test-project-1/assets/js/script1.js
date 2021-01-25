@@ -23,8 +23,9 @@ var getCurrentAirInfo = function() {
 
 var getWeather = function(results) {
     var contentEl = document.getElementById("content");
-    var iconImgLink = "assets\images\01d" + results.data.current.weather.ic + " - Copy.png";
-    var imgCode = "<img src='" + iconImgLink + "' alt='icon'>";
+    var iconIdEl = results.data.current.weather.ic;
+    var link = "https://openweathermap.org/img/wn/" + iconIdEl + "@2x.png";;
+    var imgCode = "<img src='" + link + "' alt='icon'>";
     contentEl.innerHTML = "Ahoy, " + results.data.city + "!<br>Temp: " +
         convertToF(results.data.current.weather.tp) + "F" +
         "<br>Current AQI (US): " + results.data.current.pollution.aqius + imgCode;
