@@ -26,7 +26,7 @@ var getWeather = function(results) {
     var iconIdEl = results.data.current.weather.ic;
     var link = "https://openweathermap.org/img/wn/" + iconIdEl + "@2x.png";;
     var imgCode = "<img src='" + link + "' alt='icon'>";
-    contentEl.innerHTML = "<h1>Ahoy, " + results.data.city + "!</h1><br>Temp: " +
+    contentEl.innerHTML = "<div class='heads'><h1>Ahoy, " + results.data.city + "!</h1></div><br>Temp: " +
         convertToF(results.data.current.weather.tp) + "F" +
         "<br><br>Current AQI (US): " + results.data.current.pollution.aqius + imgCode +
         "<br><br><h6>This is the AirVisual App at work.</h6>";
