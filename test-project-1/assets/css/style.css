@@ -1,23 +1,5 @@
 * {
-    background-color: rgb(111, 160, 235);
-}
-
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.heads {
-    width: 100%;
-}
-
-.content {
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-    font-weight: bold;
+    text-align: center !important;
+    background-color: rgb(67, 118, 230);
+    color: white;
 }
