@@ -1,5 +1,10 @@
 * {
     text-align: center !important;
-    background-color: rgb(67, 118, 230);
+    background-color: rgb(100, 149, 253);
     color: white;
+}
+
+.searchTerm {
+    background-color: white !important;
+    color: black !important;
 }
