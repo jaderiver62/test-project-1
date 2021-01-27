@@ -8,7 +8,6 @@ var cityArray = [];
 var getCurrentAirInfo = function() {
     var apiUrl = "https://api.airvisual.com/v2/nearest_city?key=40f410cd-9102-4b7b-9aed-cdbbce23a985";
     fetch(apiUrl).then(function(response) {
-
         if (response.ok) {
             response.json().then(function(dataResult) {
                 console.log(dataResult);
@@ -20,7 +19,6 @@ var getCurrentAirInfo = function() {
             alert("Error: " + response.statusText);
         }
     });
-
 };
 
 
@@ -30,7 +28,6 @@ function searchButtonHandler(input) {
         input + "&key=974cf3d56a9f45d58e79a7ec8b1f7842";
     // Geocode API - Open cage Data
     fetch(apiUrl).then(function(response) {
-
         if (response.ok) {
             response.json().then(function(geoData) {
                 console.log(geoData)
@@ -44,33 +41,32 @@ function searchButtonHandler(input) {
             // Check for problems
         }
     });
-
-
 };
 
 var searchResult = function(url) {
-        fetch(url).then(function(response) {
+        /*
+                fetch(url).then(function(response) {
 
-            if (response.ok) {
-                response.json().then(function(thisData) {
-                    console.log(thisData)
-                    var testingEl = document.getElementById("why");
-                    var aqiBadgeElement = createBadge(thisData.data.current.pollution.aqius);
-                    testingEl.innerHTML = "The AQI For Searched Region: " + aqiBadgeElement;
-                    var location = results.data.city + ", " + results.data.state + ", " + results.data.country;
-                    var myObj = {
-                        name: location,
-                        rating: "getRating()" // future concept of personal rating for risk assessment
-                    };
-                    cityArray.push(myObj);
-                    saveSearch();
+                    if (response.ok) {
+                        response.json().then(function(thisData) {
+                            console.log(thisData)
+                            var testingEl = document.getElementById("why");
+                            var aqiBadgeElement = createBadge(thisData.data.current.pollution.aqius);
+                            testingEl.innerHTML = "The AQI For Searched Region: " + aqiBadgeElement;
+                            var location = thisData.data.city + ", " + thisData.data.state + ", " + thisData.data.country;
+                            var myObj = {
+                                name: location,
+                                rating: "getRating()" // future concept of personal rating for risk assessment
+                            };
+                            cityArray.push(myObj);
+                            saveSearch();
+                        });
+                    } else {
+                        alert("Error: " + response.statusText);
+                        // Check for problems
+                    }
                 });
-            } else {
-                alert("Error: " + response.statusText);
-                // Check for problems
-            }
-        });
-
+        */
     }
     // Finds and saves the data needed from the API
 var displayAQIInformation = function(results) {
@@ -124,7 +120,7 @@ var createBadge = function(aqiValue) {
 // The API uses Celsius - so we want to convert this to Fahrenheit
 
 function convertToF(celsius) {
-    return celsius * 9 / 5 + 32;
+    return Math.trunc(celsius * 9 / 5 + 32);
 };
 
 
@@ -154,6 +150,7 @@ var getPollutant = function(result) {
 function saveSearch() {
     localStorage.setItem("cityArray", JSON.stringify(cityArray));
     console.log("search recorded");
+    console.log(cityArray);
 };
 
 function loadSearch() {
@@ -163,7 +160,9 @@ function loadSearch() {
         cityArray = savedSearches;
     } else { return false; }
     console.log("Search History Found...");
-    weatherArray = JSON.parse(JSON.stringify(savedSearches));
+
+    cityArray = JSON.parse(JSON.stringify(savedSearches));
+    console.log(cityArray);
     /* createHistory(); - a future function to build the search history panel */
 };
 
